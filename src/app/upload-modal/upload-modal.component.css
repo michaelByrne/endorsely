@@ -1,0 +1,129 @@
+.upload-modal {
+  padding-top: 15px;
+}
+
+.modal-content {
+  border-radius: 0 !important;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.selected {
+  color: #607D8B !important;
+  background-color: #DDD !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.connex {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+
+}
+.connex li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  margin-bottom: 3px;
+  padding: .3em 0;
+  height: 1.6em;
+}
+
+.connex li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.connex li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.connex .text {
+  position: relative;
+  top: -3px;
+}
+
+.connex .badge {
+  border-radius: 0;
+  display: inline-block;
+  font-size: small;
+  color: white;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  margin-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  min-width: 85%;
+  text-align: left;
+
+}
+
+.btn-confirm {
+  margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 0;
+
+}
+
+.invites {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+}
+.invites li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  margin-bottom: 3px;
+
+}
+
+
+.invites .text {
+  position: relative;
+  top: -3px;
+}
+
+.invites .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  margin-bottom: 3px;
+  padding-top: 9px;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 9px;
+  left: -1px;
+  top: -4px;
+  text-align: left;
+  margin-right: .8em;
+  min-width: 40%;
+
+}

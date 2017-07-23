@@ -1,0 +1,72 @@
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.profiles {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  padding-top: 20px;
+  width: 15em;
+}
+.profiles li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+
+}
+
+.profiles li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.profiles li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.profiles .text {
+  position: relative;
+  top: -3px;
+}
+.profiles .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.basic-card {
+  display: inline-block;
+  background-color: grey;
+  color: white;
+  margin: 30px;
+  padding: 17px;
+  opacity: .80;
+  position: relative;
+
+  width: 35%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile-name {
+  padding-bottom: 20px;
+  font-size: x-large;
+  opacity: .85;
+}
+
+.panel-profile {
+  background-color: #607D9F;
+}

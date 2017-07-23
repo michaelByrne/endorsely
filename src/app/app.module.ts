@@ -15,13 +15,16 @@ import { AppComponent }  from './app.component';
 // import { ImportContactsComponent } from './import-contacts.component';
 // import { LoginComponent } from './login.component';
 // import { UploadModalComponent, UploadModalContent } from './upload-modal.component';
-// import { ProfileService } from './profile.service';
+import { ProfileService } from './profile.service';
 // import { ProfileComponent } from './profile.component';
 // import { ImportService } from './contact-import.service';
 // import { HeaderService } from './header.service';
 
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UploadBaseComponent } from './upload-base/upload-base.component';
+import { UploadModalComponent } from './upload-modal/upload-modal.component';
 
 let providers = {
   "linkedin": {
@@ -43,18 +46,20 @@ let providers = {
   declarations: [
     AppComponent,
     LoginComponent,
-    // UploadModalComponent,
-    // UploadModalContent,
+    ProfileComponent,
+    UploadBaseComponent,
+    UploadModalComponent,
+
     // ImportContactsComponent,
-    // LoginComponent,
-    // ProfileComponent,
-    // FileDropDirective,
-    // FileSelectDirective
+
+
   ],
   bootstrap: [AppComponent],
-  // entryComponents: [UploadModalContent],
-  // providers: [ProfileService, ImportService, HeaderService]
+  entryComponents: [UploadModalComponent],
+  providers: [ProfileService]
 })
 export class AppModule {
   constructor(router: Router) { };
 }
+
+Angular2SocialLoginModule.loadProvidersScripts(providers);

@@ -1,0 +1,29 @@
+<div class="container upload-modal">
+  <div *ngIf="!connex">
+    <p>Follow these instructions to download your contacts CSV file from LinkedIn and then upload the file below.</p> <br>
+    <div class="fileUpload btn btn-primary btn-confirm">
+      <span>Upload</span>
+      <input type="file" class="upload" (change)="changeListener($event)" />
+    </div>
+    <hr>
+  </div>
+  <div *ngIf="connex && !requestConfirmation">
+    <h4>Select connections to invite</h4>
+    <h5>You have <span style="color:lightgreen">{{ currentProfile.endorsements }}</span> endorsements remaining</h5>
+    <button class="btn btn-primary btn-confirm" (click)="advanceToConfirmation()">Done</button>
+    <ul class="connex">
+      <li class="badge" *ngFor="let contact of connex" (click)="onSelect(contact)" [class.selected]="isInvited(contact)">
+        {{ contact[0] }} {{ contact[1] }} | {{ contact[2] }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="requestConfirmation">
+    <h4>Your invites</h4>
+    <button class="btn btn-primary btn-confirm" (click)="confirmInvites()">Confirm invitations</button>
+    <ul class="invites">
+      <li class="badge" *ngFor="let invite of invites">
+        {{ invite.firstName }} {{ invite.lastName }}
+      </li>
+    </ul>
+  </div>
+</div>

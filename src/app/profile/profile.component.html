@@ -1,0 +1,12 @@
+<div class="container" *ngIf="currentProfile">
+  <div class="basic-card">
+
+    <div class="profile-name">{{ currentProfile.firstName }} {{ currentProfile.lastName }}
+      <span style="float:right;color:lightgreen"> {{ currentProfile.endorsements }}</span>
+    </div>
+
+
+    <upload-base></upload-base>
+
+  </div>
+</div>
