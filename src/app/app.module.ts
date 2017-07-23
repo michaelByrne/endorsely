@@ -1,25 +1,60 @@
-
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 import { HttpModule } from '@angular/http';
+import { CollapseModule } from 'ngx-bootstrap';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { ContactDetailsComponent } from './contacts/contact-details/contact-details.component';
-import { ContactListComponent } from './contacts/contact-list/contact-list.component';
+
+import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent }  from './app.component';
+// import { ImportContactsComponent } from './import-contacts.component';
+// import { LoginComponent } from './login.component';
+// import { UploadModalComponent, UploadModalContent } from './upload-modal.component';
+// import { ProfileService } from './profile.service';
+// import { ProfileComponent } from './profile.component';
+// import { ImportService } from './contact-import.service';
+// import { HeaderService } from './header.service';
+
+import { Angular2SocialLoginModule } from "angular2-social-login";
+import { LoginComponent } from './login/login.component';
+
+let providers = {
+  "linkedin": {
+    "clientId": "86s8ieyp5jk1fs"
+  }
+};
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContactDetailsComponent,
-    ContactListComponent
-  ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
+    CollapseModule.forRoot(),
+    AppRoutingModule,
+    Angular2SocialLoginModule,
+    HttpModule,
     FormsModule,
-    HttpModule
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    // UploadModalComponent,
+    // UploadModalContent,
+    // ImportContactsComponent,
+    // LoginComponent,
+    // ProfileComponent,
+    // FileDropDirective,
+    // FileSelectDirective
+  ],
+  bootstrap: [AppComponent],
+  // entryComponents: [UploadModalContent],
+  // providers: [ProfileService, ImportService, HeaderService]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router) { };
+}
