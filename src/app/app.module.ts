@@ -16,6 +16,7 @@ import { AppComponent }  from './app.component';
 // import { LoginComponent } from './login.component';
 // import { UploadModalComponent, UploadModalContent } from './upload-modal.component';
 import { ProfileService } from './profile.service';
+import { UIStateService } from './ui-state.service';
 // import { ProfileComponent } from './profile.component';
 // import { ImportService } from './contact-import.service';
 // import { HeaderService } from './header.service';
@@ -56,7 +57,7 @@ let providers = {
   ],
   bootstrap: [AppComponent],
   entryComponents: [UploadModalComponent],
-  providers: [ProfileService]
+  providers: [ProfileService, UIStateService]
 })
 export class AppModule {
   constructor(router: Router) { };

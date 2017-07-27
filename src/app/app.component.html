@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+<!-- <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,5 +12,23 @@
       <a class="nav-link" routerLink="/login">Register</a>
     </li>
   </ul>
+</nav> -->
+<style>
+  .container {
+    position: relative;
+    width: 70%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding-top: 15px;
+    box-sizing: border-box;
+  }
+</style>
+<nav class="container head">
+  <a class="navbar-brand">Endorsly</a>
+  <button *ngIf="!loggedState" type="button" class="btn btn-outline-primary " style="float:right" (click)="goToLogin()">Login</button>
+  <button *ngIf="loggedState" type="button" class="btn btn-outline-primary " style="float:right" (click)="goToLogin()">Logout</button>
 </nav>
+<div class="message">
+  <h3>connections matter.</h3></div>
 <router-outlet></router-outlet>

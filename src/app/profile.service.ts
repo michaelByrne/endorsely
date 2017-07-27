@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 
 export class Profile {
   constructor(public linkedInId: string,
     public firstName: string,
     public lastName: string,
+    public id: string
   ) { }
 }
 
@@ -22,8 +25,21 @@ export class TempProfile {
 export class ProfileService {
   constructor(private http: Http) { }
   public currentProfile: Profile;
+  private rxProfile = new Subject<Profile>();
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private profilesUrl = 'https://sleepy-beyond-77887.herokuapp.com/profiles';
+
+
+
+  sendRxProfile(profile: Profile) {
+    console.log("sending profile");
+    console.log(profile);
+    this.rxProfile.next(profile);
+  }
+
+  getRxProfile(): Observable<Profile> {
+    return this.rxProfile.asObservable();
+  }
 
   getProfiles(): Promise<Profile[]> {
     console.log("getting profiles");
@@ -43,13 +59,20 @@ export class ProfileService {
       .catch(this.handleError);
   }
 
+  updateProfile(uid: string): Promise<Profile> {
+    const url = `${this.profilesUrl}/${uid}`;
+    return this.http.put(url, this.currentProfile)
+      .toPromise()
+      .then(response => { console.log(response); return response.json() as Profile });
+  }
+
   getLoggedInProfile(): Profile {
     return this.currentProfile;
   }
 
   putLoggedInProfile(profile: Profile): void {
     this.currentProfile = profile;
-    console.log(this.currentProfile);
+    this.updateProfile(this.currentProfile.id);
   }
 
   addProfile(id: string, firstName: string, lastName: string): Promise<Profile> {

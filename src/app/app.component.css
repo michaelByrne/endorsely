@@ -1,3 +1,11 @@
 .navbar-brand {
-  color: #4dffff !important;
+  color: #513689 !important;
+}
+
+.message {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  color: darkgrey;
+
 }

@@ -70,10 +70,7 @@ export class UploadModalComponent implements OnInit {
   onSelect(contact: string[]): void {
     let newContact = new TempProfile(contact[0], contact[1], contact[2]);
     this.selectedContact = newContact;
-    console.log(this.selectedContact);
     this.invites.push(this.selectedContact);
-    console.log(this.invites.filter(function(invite) { return invite.email === contact[2] }).length > 0);
-    console.log(this.currentProfile);
     this.currentProfile.endorsements--;
   }
 
@@ -86,10 +83,10 @@ export class UploadModalComponent implements OnInit {
   }
 
   confirmInvites(): void {
-    console.log(this.invites);
-    this.profileService.inviteUsers(this.invites).then(res => console.log(res));
+    this.profileService.inviteUsers(this.invites).then(res => { console.log(res); this.activeModal.dismiss(); });
     this.profileService.putLoggedInProfile(this.currentProfile);
-    this.activeModal.dismiss();
+    this.profileService.sendRxProfile(this.currentProfile);
+
   }
 
 

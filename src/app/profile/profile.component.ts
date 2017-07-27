@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ProfileService, Profile } from '../profile.service';
 
@@ -10,15 +11,18 @@ import { ProfileService, Profile } from '../profile.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   profiles: Profile[];
   currentProfile: Profile;
+  subscription: Subscription;
   addedNew: boolean = false;
 
   constructor(
     private profileService: ProfileService,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location) {
+    this.subscription = this.profileService.getRxProfile().subscribe(profile => { this.currentProfile = profile });
+  }
 
 
   ngOnInit(): void {
@@ -62,6 +66,11 @@ export class ProfileComponent implements OnInit {
 
   public expanded(event: any): void {
     console.log(event);
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 
 }

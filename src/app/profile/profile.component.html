@@ -1,8 +1,9 @@
-<div class="container" *ngIf="currentProfile">
+<div class="container" *ngIf="currentProfile" style="margin-left:20px !important">
   <div class="basic-card">
 
-    <div class="profile-name">{{ currentProfile.firstName }} {{ currentProfile.lastName }}
-      <span style="float:right;color:lightgreen"> {{ currentProfile.endorsements }}</span>
+    <div class="profile-name">Hi, {{ currentProfile.firstName }} {{ currentProfile.lastName }}
+      <span *ngIf="currentProfile.endorsements > 0" style="float:right;color:lightgreen"> {{ currentProfile.endorsements }}</span>
+      <span *ngIf="currentProfile.endorsements < 1" style="float:right;color:red"> {{ currentProfile.endorsements }}</span>
     </div>
 
 

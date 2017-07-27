@@ -15,7 +15,7 @@ export class UploadBaseComponent {
 
   open() {
     const modalRef = this.modalService.open(UploadModalComponent);
-    modalRef.result.then(what => console.log(what));
+    //modalRef.result.then(what => console.log(what));
 
   }
 

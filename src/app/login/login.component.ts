@@ -2,6 +2,8 @@ import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { AuthService } from "angular2-social-login";
 import { Router } from '@angular/router';
 
+import { UIStateService } from '../ui-state.service';
+
 
 declare var IN: any;
 
@@ -17,7 +19,7 @@ declare var IN: any;
 export class LoginComponent implements OnDestroy {
   public user;
   sub: any;
-  constructor(public _auth: AuthService, private router: Router) { };
+  constructor(public _auth: AuthService, private router: Router, public uistate: UIStateService) { };
 
   signIn(provider) {
     this.sub = this._auth.login(provider).subscribe(
@@ -26,6 +28,7 @@ export class LoginComponent implements OnDestroy {
         this.user = data;
         let firstName = this.user.name.split(" ")[0];
         let lastName = this.user.name.split(" ")[1];
+        this.uistate.sendLoggedState(true);
         this.router.navigate(['/profile', this.user.uid, firstName, lastName]);
       }
     )
