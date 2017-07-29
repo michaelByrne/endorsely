@@ -64,11 +64,19 @@
 }
 
 .profile-name {
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   font-size: x-large;
-  opacity: .85;
 }
 
 .panel-profile {
   background-color: #607D9F;
+}
+
+.profile-status{
+  color:darkgrey;
+  font-size: large;
+}
+
+.profile-info{
+  padding-bottom: 20px;
 }

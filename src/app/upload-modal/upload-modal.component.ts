@@ -68,10 +68,13 @@ export class UploadModalComponent implements OnInit {
   }
 
   onSelect(contact: string[]): void {
-    let newContact = new TempProfile(contact[0], contact[1], contact[2]);
-    this.selectedContact = newContact;
-    this.invites.push(this.selectedContact);
-    this.currentProfile.endorsements--;
+    console.log(this.currentProfile.endorsements);
+    if (this.currentProfile.endorsements > 0) {
+      let newContact = new TempProfile(contact[0], contact[1], contact[2]);
+      this.selectedContact = newContact;
+      this.invites.push(this.selectedContact);
+      this.currentProfile.endorsements--;
+    }
   }
 
   isInvited(contact: string[]): boolean {

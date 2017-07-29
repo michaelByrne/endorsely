@@ -24,11 +24,14 @@
     box-sizing: border-box;
   }
 </style>
-<nav class="container head">
-  <a class="navbar-brand">Endorsly</a>
-  <button *ngIf="!loggedState" type="button" class="btn btn-outline-primary " style="float:right" (click)="goToLogin()">Login</button>
-  <button *ngIf="loggedState" type="button" class="btn btn-outline-primary " style="float:right" (click)="goToLogin()">Logout</button>
-</nav>
-<div class="message">
-  <h3>connections matter.</h3></div>
+<div class="row">
+  <div class="col-3">
+    <nav class="head">
+      <a class="navbar-brand">Endorsly</a>
+      <button *ngIf="!loggedState" type="button" class="btn btn-default btn-sharp outline" style="float:right" (click)="goToLogin()">Login</button>
+      <button *ngIf="loggedState" type="button" class="btn btn-default outline" style="float:right" (click)="goToLogin()">Logout</button>
+      <hr>
+    </nav>
+  </div>
+</div>
 <router-outlet></router-outlet>

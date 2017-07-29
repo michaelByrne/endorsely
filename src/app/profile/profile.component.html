@@ -1,13 +1,12 @@
-<div class="container" *ngIf="currentProfile" style="margin-left:20px !important">
-  <div class="basic-card">
-
-    <div class="profile-name">Hi, {{ currentProfile.firstName }} {{ currentProfile.lastName }}
-      <span *ngIf="currentProfile.endorsements > 0" style="float:right;color:lightgreen"> {{ currentProfile.endorsements }}</span>
-      <span *ngIf="currentProfile.endorsements < 1" style="float:right;color:red"> {{ currentProfile.endorsements }}</span>
+<div class="row">
+  <div class="col-4">
+    <div *ngIf="currentProfile" style="margin-left:20px !important">
+      <div class="profile-info">
+        <div class="profile-name">{{ currentProfile.firstName }} {{ currentProfile.lastName }}
+        </div>
+        <div class="profile-status">Member</div>
+      </div>
+      <upload-base></upload-base>
     </div>
-
-
-    <upload-base></upload-base>
-
   </div>
 </div>

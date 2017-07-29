@@ -10,7 +10,9 @@ export class Profile {
   constructor(public linkedInId: string,
     public firstName: string,
     public lastName: string,
-    public id: string
+    public id: string,
+    public endorsements: number,
+    public endorsementsRecieved: number
   ) { }
 }
 

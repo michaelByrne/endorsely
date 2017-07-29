@@ -7,7 +7,7 @@
     </div>
     <hr>
   </div>
-  <div *ngIf="connex && !requestConfirmation">
+  <div *ngIf="connex && !requestConfirmation && currentProfile.endorsements > 0">
     <h4>Select connections to invite</h4>
     <h5>You have <span style="color:lightgreen">{{ currentProfile.endorsements }}</span> endorsements remaining</h5>
     <button class="btn btn-primary btn-confirm" (click)="advanceToConfirmation()">Done</button>
@@ -16,6 +16,9 @@
         {{ contact[0] }} {{ contact[1] }} | {{ contact[2] }}
       </li>
     </ul>
+  </div>
+  <div *ngIf="currentProfile.endorsements < 1">
+    <h5>You are out of endorsements</h5>
   </div>
   <div *ngIf="requestConfirmation">
     <h4>Your invites</h4>

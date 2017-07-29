@@ -3,6 +3,7 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 import { ProfileService, Profile, TempProfile } from '../profile.service';
 import { UploadModalComponent } from '../upload-modal/upload-modal.component';
+import { ContactsModalComponent } from '../contacts-modal/contacts-modal.component';
 
 @Component({
   selector: 'upload-base',
@@ -13,10 +14,12 @@ export class UploadBaseComponent {
   constructor(private modalService: NgbModal) { }
 
 
-  open() {
+  openImport() {
     const modalRef = this.modalService.open(UploadModalComponent);
-    //modalRef.result.then(what => console.log(what));
+  }
 
+  openContacts() {
+    const modalRef = this.modalService.open(ContactsModalComponent);
   }
 
 }
