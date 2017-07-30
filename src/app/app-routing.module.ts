@@ -12,7 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 const appRoutes: Routes = [
   // { path: 'import-ctx', component: ImportContactsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile/:id/:firstName/:lastName', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '*', component: AppComponent }
   // { path: 'profiles', component: ProfileComponent },
   // { path: 'profile/:id/:firstName/:lastName', component: ProfileComponent }

@@ -1,11 +1,37 @@
 <div class="row">
-  <div class="col-4">
+  <div class="col-3">
     <div *ngIf="currentProfile" style="margin-left:20px !important">
       <div class="profile-info">
         <div class="profile-name">{{ currentProfile.firstName }} {{ currentProfile.lastName }}
         </div>
-        <div class="profile-status">Member</div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <div class="image-cropper center-block">
+              <img [src]="currentProfile.publicProfileUrl" />
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="profile-status text-center">Member</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+
+          </div>
+          <div class="col">
+            <div class="number-circle">10</div>
+            <span class="number-circle">0</span>
+          </div>
+          <div class="col">
+
+          </div>
+        </div>
       </div>
+      <hr>
       <upload-base></upload-base>
     </div>
   </div>

@@ -66,6 +66,7 @@
 .profile-name {
   padding-bottom: 5px;
   font-size: x-large;
+  text-align: center;
 }
 
 .panel-profile {
@@ -75,8 +76,43 @@
 .profile-status{
   color:darkgrey;
   font-size: large;
+  text-align: center;
 }
 
 .profile-info{
   padding-bottom: 20px;
+}
+
+.profile-endorse{
+  font-size: medium;
+}
+
+.image-cropper {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 110%;
+    width: auto;
+}
+
+.number-circle {
+  background: #513689;
+  border-radius: 1.5em;
+  -moz-border-radius: 1.5em;
+  -webkit-border-radius: 1.5em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 3em;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  width: 3em;
 }

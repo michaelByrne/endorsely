@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ProfileService, Profile } from '../profile.service';
+import { UIStateService } from '../ui-state.service';
 
 @Component({
   selector: 'profile-component',
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(
     private profileService: ProfileService,
     private route: ActivatedRoute,
+    private uiState: UIStateService,
     private location: Location) {
     this.subscription = this.profileService.getRxProfile().subscribe(profile => { this.currentProfile = profile });
   }
@@ -30,22 +32,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.currentProfile = this.profileService.getLoggedInProfile();
     }
     else {
-      let id = this.route.snapshot.params['id'];
-      let firstName = this.route.snapshot.params['firstName'];
-      let lastName = this.route.snapshot.params['lastName'];
-      this.route.paramMap
-        .switchMap((params: ParamMap) => this.profileService.getProfile(id))
-        .subscribe(profile => {
-          this.currentProfile = profile;
-          console.log(profile);
-          if (!profile) {
-            this.profileService.addProfile(id, firstName, lastName).then(profile => {
-              this.currentProfile = profile;
-              console.log(profile);
-              this.addedNew = true;
-            });
-          }
-        });
+      console.log("no profile");
     }
   };
 
@@ -54,9 +41,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.profileService.getProfiles().then(profiles => { this.profiles = profiles; console.log(profiles) });
   }
 
-  addProfile(): void {
-    this.profileService.addProfile("001", "mr", "burns");
-  }
+
 
   public isCollapsed: boolean = true;
 

@@ -26,10 +26,16 @@
 </style>
 <div class="row">
   <div class="col-3">
-    <nav class="head">
-      <a class="navbar-brand">Endorsly</a>
-      <button *ngIf="!loggedState" type="button" class="btn btn-default btn-sharp outline" style="float:right" (click)="goToLogin()">Login</button>
-      <button *ngIf="loggedState" type="button" class="btn btn-default outline" style="float:right" (click)="goToLogin()">Logout</button>
+    <nav class="head" style="margin-left:20px !important">
+      <div class="row">
+        <div class="col">
+          <a class="navbar-brand">Endorsly</a>
+        </div>
+        <div class="col">
+          <button *ngIf="!loggedState" type="button" class="btn btn-default btn-sharp outline" (click)="goToLogin()">Login</button>
+          <button *ngIf="loggedState" type="button" class="btn btn-default outline" (click)="goToLogin()">Logout</button>
+        </div>
+      </div>
       <hr>
     </nav>
   </div>

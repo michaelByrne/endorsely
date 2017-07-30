@@ -3,6 +3,7 @@ import { AuthService } from "angular2-social-login";
 import { Router } from '@angular/router';
 
 import { UIStateService } from '../ui-state.service';
+import { Profile, ProfileService } from '../profile.service';
 
 
 declare var IN: any;
@@ -19,7 +20,7 @@ declare var IN: any;
 export class LoginComponent implements OnDestroy {
   public user;
   sub: any;
-  constructor(public _auth: AuthService, private router: Router, public uistate: UIStateService) { };
+  constructor(public _auth: AuthService, private router: Router, public uistate: UIStateService, public profileService: ProfileService) { };
 
   signIn(provider) {
     this.sub = this._auth.login(provider).subscribe(
@@ -28,8 +29,23 @@ export class LoginComponent implements OnDestroy {
         this.user = data;
         let firstName = this.user.name.split(" ")[0];
         let lastName = this.user.name.split(" ")[1];
-        this.uistate.sendLoggedState(true);
-        this.router.navigate(['/profile', this.user.uid, firstName, lastName]);
+        this.profileService.getProfile(this.user.uid)
+          .then(profile => {
+            console.log(profile);
+            if (!profile) {
+              this.profileService.addProfile(this.user.uid, firstName, lastName, this.user.image).then(profile => {
+                console.log(profile);
+                this.uistate.sendLoggedState(true);
+                this.router.navigate(['/profile']);
+              });
+            }
+            else {
+              this.profileService.putLoggedInProfile(profile);
+              this.uistate.sendLoggedState(true);
+              this.router.navigate(['/profile']);
+
+            }
+          });
       }
     )
   }

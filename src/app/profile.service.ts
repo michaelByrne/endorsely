@@ -12,7 +12,8 @@ export class Profile {
     public lastName: string,
     public id: string,
     public endorsements: number,
-    public endorsementsRecieved: number
+    public endorsementsRecieved: number,
+    public imageUrl: string
   ) { }
 }
 
@@ -69,6 +70,9 @@ export class ProfileService {
   }
 
   getLoggedInProfile(): Profile {
+    if (this.currentProfile) {
+      this.sendRxProfile(this.currentProfile);
+    }
     return this.currentProfile;
   }
 
@@ -77,8 +81,8 @@ export class ProfileService {
     this.updateProfile(this.currentProfile.id);
   }
 
-  addProfile(id: string, firstName: string, lastName: string): Promise<Profile> {
-    return this.http.post(this.profilesUrl, JSON.stringify({ id: id, firstName: firstName, lastName: lastName }), { headers: this.headers })
+  addProfile(id: string, firstName: string, lastName: string, imageUrl: string): Promise<Profile> {
+    return this.http.post(this.profilesUrl, JSON.stringify({ id: id, firstName: firstName, lastName: lastName, publicProfileUrl: imageUrl }), { headers: this.headers })
       .toPromise()
       .then(res => { this.currentProfile = res.json(); return res.json() as Profile })
       .catch(this.handleError);
