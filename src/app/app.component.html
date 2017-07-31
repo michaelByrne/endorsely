@@ -32,8 +32,8 @@
           <a class="navbar-brand">Endorsly</a>
         </div>
         <div class="col">
-          <button *ngIf="!loggedState" type="button" class="btn btn-default btn-sharp outline" (click)="goToLogin()">Login</button>
-          <button *ngIf="loggedState" type="button" class="btn btn-default outline" (click)="goToLogin()">Logout</button>
+          <button *ngIf="!loggedState" type="button" class="btn btn-default btn-sharp outline" style="float:right" (click)="goToLogin()">Login</button>
+          <button *ngIf="loggedState" type="button" class="btn btn-default outline" style="float:right" (click)="goToLogin()">Logout</button>
         </div>
       </div>
       <hr>

@@ -12,7 +12,7 @@ export class Profile {
     public lastName: string,
     public id: string,
     public endorsements: number,
-    public endorsementsRecieved: number,
+    public endorsementsReceived: number,
     public imageUrl: string
   ) { }
 }
@@ -60,6 +60,13 @@ export class ProfileService {
       .toPromise()
       .then(response => { this.currentProfile = response.json(); return response.json() as Profile })
       .catch(this.handleError);
+  }
+
+  updateEndorsement(profile: Profile): Promise<Profile> {
+    const url = `${this.profilesUrl}/${profile.id}`;
+    return this.http.put(url, profile)
+      .toPromise()
+      .then(response => { console.log(response); return response.json() as Profile })
   }
 
   updateProfile(uid: string): Promise<Profile> {

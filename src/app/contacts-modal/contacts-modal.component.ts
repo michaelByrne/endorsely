@@ -15,6 +15,7 @@ import { ProfileComponent } from './../profile/profile.component';
 export class ContactsModalComponent implements OnInit {
 
   currentProfiles: Profile[];
+  currentProfile: Profile;
   public searchText: any = { lastName: '' };
 
   constructor(private profileService: ProfileService) { }
@@ -23,6 +24,14 @@ export class ContactsModalComponent implements OnInit {
 
   ngOnInit() {
     this.profileService.getProfiles().then(profiles => { console.log(profiles); this.currentProfiles = profiles });
+    this.currentProfile = this.profileService.getLoggedInProfile();
+  }
+
+  addEndorsementToProfile(profile: Profile) {
+    profile.endorsementsReceived++;
+    this.currentProfile.endorsements--;
+    this.profileService.updateEndorsement(profile).then(profile => console.log(profile));
+    this.profileService.updateEndorsement(this.currentProfile).then(profile => console.log(profile));
   }
 
 
