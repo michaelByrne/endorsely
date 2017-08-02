@@ -1,3 +1,6 @@
+// TODO: Update API to handle inactive users
+// Done 7-31: updated add profile function in service
+
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -5,16 +8,23 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
+import { UUID } from 'angular2-uuid';
+
 
 export class Profile {
-  constructor(public linkedInId: string,
+  constructor(
     public firstName: string,
     public lastName: string,
-    public id: string,
-    public endorsements: number,
-    public endorsementsReceived: number,
-    public imageUrl: string
-  ) { }
+    public linkedInID: string = null,
+    public email: string = null,
+    public publicProfileUrl: string = null,
+    public active: boolean = false,
+    public endorsements: number = 10,
+    public endorsementsReceived: number = 0,
+    public id: string = UUID.UUID()
+  ) {
+
+  }
 }
 
 export class TempProfile {
@@ -26,7 +36,9 @@ export class TempProfile {
 
 @Injectable()
 export class ProfileService {
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+
+  }
   public currentProfile: Profile;
   private rxProfile = new Subject<Profile>();
   private headers = new Headers({ 'Content-Type': 'application/json' });
@@ -35,8 +47,6 @@ export class ProfileService {
 
 
   sendRxProfile(profile: Profile) {
-    console.log("sending profile");
-    console.log(profile);
     this.rxProfile.next(profile);
   }
 
@@ -88,19 +98,23 @@ export class ProfileService {
     this.updateProfile(this.currentProfile.id);
   }
 
-  addProfile(id: string, firstName: string, lastName: string, imageUrl: string): Promise<Profile> {
-    return this.http.post(this.profilesUrl, JSON.stringify({ id: id, firstName: firstName, lastName: lastName, publicProfileUrl: imageUrl }), { headers: this.headers })
+  addProfile(firstName: string, lastName: string, imageUrl: string, active: boolean, linkedInId: string): Promise<Profile> {
+    let newProfile = new Profile(firstName, lastName, linkedInId, null, imageUrl, true);
+    console.log(newProfile)
+    return this.http.post(this.profilesUrl, JSON.stringify(newProfile), { headers: this.headers })
       .toPromise()
       .then(res => { this.currentProfile = res.json(); return res.json() as Profile })
       .catch(this.handleError);
   }
 
-  inviteUsers(invites: TempProfile[]): Promise<any> {
-    return this.http.post(this.profilesUrl + '/invites', JSON.stringify(invites), { headers: this.headers })
+  addInactive(firstName: string, lastName: string, imageUrl: string, active: boolean): Promise<Profile> {
+    let newProfile = new Profile(firstName, lastName, imageUrl);
+    return this.http.post(this.profilesUrl, JSON.stringify(newProfile), { headers: this.headers })
       .toPromise()
-      .then(res => res)
+      .then(res => { this.currentProfile = res.json(); return res.json() as Profile })
       .catch(this.handleError);
   }
+
 
   private handleError(error: any): Promise<any> {
     console.error("an error happened here", error);

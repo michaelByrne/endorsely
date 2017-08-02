@@ -33,8 +33,7 @@ export class LoginComponent implements OnDestroy {
           .then(profile => {
             console.log(profile);
             if (!profile) {
-              this.profileService.addProfile(this.user.uid, firstName, lastName, this.user.image).then(profile => {
-                console.log(profile);
+              this.profileService.addProfile(firstName, lastName, this.user.image, true, this.user.uid).then(profile => {
                 this.uistate.sendLoggedState(true);
                 this.router.navigate(['/profile']);
               });
@@ -43,7 +42,6 @@ export class LoginComponent implements OnDestroy {
               this.profileService.putLoggedInProfile(profile);
               this.uistate.sendLoggedState(true);
               this.router.navigate(['/profile']);
-
             }
           });
       }

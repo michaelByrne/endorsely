@@ -15,6 +15,9 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 
+// Outside Services
+import { UUID } from 'angular2-uuid';
+
 // Routes
 import { AppRoutingModule } from './app-routing.module';
 
@@ -61,6 +64,7 @@ let providers = {
   bootstrap: [AppComponent],
   entryComponents: [UploadModalComponent, ContactsModalComponent],
   providers: [
+    UUID,
     ProfileService,
     UIStateService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }

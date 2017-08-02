@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { UUID } from 'angular2-uuid';
 
 import { ProfileService, Profile, TempProfile } from '../profile.service';
 
@@ -70,7 +71,8 @@ export class UploadModalComponent implements OnInit {
   onSelect(contact: string[]): void {
     console.log(this.currentProfile.endorsements);
     if (this.currentProfile.endorsements > 0) {
-      let newContact = new TempProfile(contact[0], contact[1], contact[2]);
+      let newContact = new Profile(contact[0], contact[1], contact[2]);
+      console.log(newContact);
       this.selectedContact = newContact;
       this.invites.push(this.selectedContact);
       this.currentProfile.endorsements--;
@@ -86,7 +88,7 @@ export class UploadModalComponent implements OnInit {
   }
 
   confirmInvites(): void {
-    this.profileService.inviteUsers(this.invites).then(res => { console.log(res); this.activeModal.dismiss(); });
+
     this.profileService.putLoggedInProfile(this.currentProfile);
     this.profileService.sendRxProfile(this.currentProfile);
 
