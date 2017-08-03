@@ -17,6 +17,7 @@ export class ContactsModalComponent implements OnInit {
   currentProfiles: Profile[];
   currentProfile: Profile;
   public searchText: any = { lastName: '' };
+  showAll: boolean = false;
 
   constructor(private profileService: ProfileService) { }
 

@@ -107,11 +107,10 @@ export class ProfileService {
       .catch(this.handleError);
   }
 
-  addInactive(firstName: string, lastName: string, imageUrl: string, active: boolean): Promise<Profile> {
-    let newProfile = new Profile(firstName, lastName, imageUrl);
-    return this.http.post(this.profilesUrl, JSON.stringify(newProfile), { headers: this.headers })
+  addInactiveBatch(profiles: Profile[]): Promise<Profile[]> {
+    return this.http.post(this.profilesUrl, JSON.stringify(profiles), { headers: this.headers })
       .toPromise()
-      .then(res => { this.currentProfile = res.json(); return res.json() as Profile })
+      .then(res => { return res.json() as Profile[] })
       .catch(this.handleError);
   }
 

@@ -10,3 +10,21 @@
 .btn-default .btn-label-subaction {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: #a38855; color: #fff; border-radius: 3px 0 0 3px;}
 .btn-labeled {padding-top: 0;padding-bottom: 0;}
 .btn { margin-bottom:10px; min-width: 150px; text-align: left;}
+
+
+.image-cropper {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+    margin-left: 10px;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 110%;
+    width: auto;
+}

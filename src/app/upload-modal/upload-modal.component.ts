@@ -19,7 +19,7 @@ export class UploadModalComponent implements OnInit {
   connex: string[][];
   currentProfile: any;
   selectedContact: TempProfile;
-  invites: TempProfile[] = new Array();
+  invites: Profile[] = new Array();
   requestConfirmation: boolean = false;
 
 
@@ -71,10 +71,10 @@ export class UploadModalComponent implements OnInit {
   onSelect(contact: string[]): void {
     console.log(this.currentProfile.endorsements);
     if (this.currentProfile.endorsements > 0) {
-      let newContact = new Profile(contact[0], contact[1], contact[2]);
+      console.log(contact);
+      let newContact = new Profile(contact[0], contact[1], null, contact[2]);
       console.log(newContact);
-      this.selectedContact = newContact;
-      this.invites.push(this.selectedContact);
+      this.invites.push(newContact);
       this.currentProfile.endorsements--;
     }
   }
@@ -88,10 +88,10 @@ export class UploadModalComponent implements OnInit {
   }
 
   confirmInvites(): void {
-
+    this.profileService.addInactiveBatch(this.invites);
     this.profileService.putLoggedInProfile(this.currentProfile);
     this.profileService.sendRxProfile(this.currentProfile);
-
+    this.activeModal.dismiss();
   }
 
 
