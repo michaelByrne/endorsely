@@ -1,6 +1,6 @@
-<div *ngIf="currentProfiles">
+<div *ngIf="currentProfiles" class="profile-list">
   <h4>Select profiles to endorse</h4>
-  <label>Search by last name: <input [(ngModel)]="searchText.lastName"></label>
+  <label>Search by last name: <input [(ngModel)]="searchText.lastName"></label><br>
   <button class="btn btn-default outline btn-sharp" (click)="showAll = true">show all</button>
   <ul class="connex" *ngIf="searchText.lastName.length > 1 || showAll">
     <li class="badge" *ngFor="let profile of currentProfiles | filterBy: searchText" (click)="addEndorsementToProfile(profile)">

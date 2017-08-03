@@ -87,6 +87,10 @@
   font-size: medium;
 }
 
+.profile-list {
+  margin: 30px;
+}
+
 .image-cropper {
     width: 70px;
     height: 70px;
