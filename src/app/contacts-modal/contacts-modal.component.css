@@ -28,3 +28,8 @@ img {
     height: 110%;
     width: auto;
 }
+
+
+.profile-list {
+  margin: 30px;
+}
