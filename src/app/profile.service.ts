@@ -15,10 +15,14 @@ export class Profile {
   constructor(
     public firstName: string,
     public lastName: string,
+    public fullName: string,
     public linkedInID: string = null,
     public email: string = null,
     public publicProfileUrl: string = null,
     public active: boolean = false,
+    public location: string = null,
+    public position: string = null,
+    public company: string = null,
     public endorsements: number = 10,
     public endorsementsReceived: number = 0,
     public id: string = UUID.UUID()
@@ -98,8 +102,8 @@ export class ProfileService {
     this.updateProfile(this.currentProfile.id);
   }
 
-  addProfile(firstName: string, lastName: string, imageUrl: string, active: boolean, linkedInId: string): Promise<Profile> {
-    let newProfile = new Profile(firstName, lastName, linkedInId, null, imageUrl, true);
+  addProfile(firstName: string, lastName: string, fullName: string, imageUrl: string, active: boolean, linkedInId: string, email: string, location: string, position: string): Promise<Profile> {
+    let newProfile = new Profile(firstName, lastName, fullName, linkedInId, email, imageUrl, true, location, position);
     console.log(newProfile)
     return this.http.post(this.profilesUrl, JSON.stringify(newProfile), { headers: this.headers })
       .toPromise()

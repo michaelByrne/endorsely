@@ -15,24 +15,37 @@
         </div>
         <div class="row">
           <div class="col">
-            <div class="profile-status text-center">Member</div>
+            <div class="profile-status text-center">{{ currentProfile.position }}</div>
           </div>
         </div>
         <div class="row">
           <div class="col">
+            <div class="lead text-center">{{ currentProfile.location }}</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
 
           </div>
-          <div class="col">
+          <div class="col" style="text-align:center">
             <div class="number-circle">{{ currentProfile.endorsementsReceived }}</div>
-            <span class="number-circle">{{ currentProfile.endorsements }}</span>
           </div>
           <div class="col">
 
           </div>
         </div>
+        <br><br>
+        <div class="row">
+
+          <div class="col">
+            <div class="text-center">Import contacts <span style="cursor: pointer; color: blue;font-size:small"><i class="fa fa-upload" (click)="openImport()"></i></span></div>
+          </div>
+
+        </div>
       </div>
       <hr>
-      <upload-base></upload-base>
+      <app-user-search></app-user-search>
     </div>
   </div>
 </div>

@@ -9,11 +9,25 @@
   </div>
   <div *ngIf="connex && !requestConfirmation && currentProfile.endorsements > 0">
     <h4>Select connections to invite</h4>
+    <label>Filter by last name: <input [(ngModel)]="searchText.lastName"></label><br>
     <h5>You have <span style="color:lightgreen">{{ currentProfile.endorsements }}</span> endorsements remaining</h5>
     <button class="btn btn-primary btn-confirm" (click)="advanceToConfirmation()">Done</button>
-    <ul class="connex">
+    <!-- <ul class="connex">
       <li class="badge" *ngFor="let contact of connex" (click)="onSelect(contact)" [class.selected]="isInvited(contact)">
-        {{ contact[0] }} {{ contact[1] }} | {{ contact[2] }}
+        <span *ngIf="contact[3]"><i class="fa fa-star fa-sm"></i></span> <span>{{ contact[0] }} {{ contact[1] }}</span>
+        <span class="image-cropper center-block">
+          <img src="../../assets/placeholder.jpg" />
+        </span>
+      </li>
+    </ul> -->
+    <ul class="connex">
+      <li class="badge" *ngFor="let profile of incomingProfiles" [ngClass]="{'active-badge': profile.active }" (click)="onSelect(profile)" [class.selected]="isInvited(profile)">
+        <span *ngIf="profile.active"><i class="fa fa-star fa-2x"></i></span>
+
+        <span *ngIf="profile.active" class="image-cropper center-block">
+          <img src="../../assets/placeholder.jpg" />
+        </span>
+        <span style="float:right;">{{ profile.fullName }} | {{ profile.position }} | {{ profile.company }}</span>
       </li>
     </ul>
   </div>

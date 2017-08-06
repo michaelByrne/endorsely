@@ -74,7 +74,7 @@
   top: -4px;
   height: 1.8em;
   margin-right: .8em;
-  min-width: 85%;
+  width: 100%;
   text-align: left;
 
 }
@@ -125,5 +125,37 @@
   text-align: left;
   margin-right: .8em;
   min-width: 40%;
+
+}
+
+.image-cropper {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+    margin-left: 10px;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 110%;
+    width: auto;
+}
+
+inactive-img {
+  background-color: #607D8B;
+}
+
+.active-badge {
+  background-color: #6A9D80 !important;
+  pointer-events:none;
+  height: 2.8em !important;
+}
+
+.badge {
+  height: 1.8em;
 
 }

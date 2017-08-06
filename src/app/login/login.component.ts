@@ -29,11 +29,11 @@ export class LoginComponent implements OnDestroy {
         this.user = data;
         let firstName = this.user.name.split(" ")[0];
         let lastName = this.user.name.split(" ")[1];
-        this.profileService.getProfile(this.user.uid)
+        this.profileService.getProfile(this.user.email)
           .then(profile => {
             console.log(profile);
             if (!profile) {
-              this.profileService.addProfile(firstName, lastName, this.user.image, true, this.user.uid).then(profile => {
+              this.profileService.addProfile(firstName, lastName, this.user.name, this.user.image, true, this.user.uid, this.user.email, this.user.location, this.user.position).then(profile => {
                 this.uistate.sendLoggedState(true);
                 this.router.navigate(['/profile']);
               });

@@ -24,6 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
 // Services
 import { ProfileService } from './profile.service';
 import { UIStateService } from './ui-state.service';
+import { LinkedService } from './linked.service';
+
 
 
 // Components
@@ -33,6 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UploadBaseComponent } from './upload-base/upload-base.component';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { ContactsModalComponent } from './contacts-modal/contacts-modal.component';
+import { UserSearchComponent } from './user-search/user-search.component';
 
 let providers = {
   "linkedin": {
@@ -60,10 +63,12 @@ let providers = {
     UploadBaseComponent,
     UploadModalComponent,
     ContactsModalComponent,
+    UserSearchComponent,
   ],
   bootstrap: [AppComponent],
   entryComponents: [UploadModalComponent, ContactsModalComponent],
   providers: [
+    LinkedService,
     UUID,
     ProfileService,
     UIStateService,

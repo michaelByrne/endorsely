@@ -20,13 +20,16 @@ export class UploadModalComponent implements OnInit {
   currentProfile: any;
   selectedContact: TempProfile;
   invites: Profile[] = new Array();
+  currentProfiles: Profile[] = new Array();
+  incomingProfiles: Profile[] = new Array();
   requestConfirmation: boolean = false;
-
+  public searchText: any = { lastName: '' };
 
 
 
   ngOnInit(): void {
     this.currentProfile = this.profileService.getLoggedInProfile();
+    this.profileService.getProfiles().then(profiles => { console.log(profiles); this.currentProfiles = profiles });
     console.log(this.currentProfile);
 
   }
@@ -48,39 +51,56 @@ export class UploadModalComponent implements OnInit {
   }
 
   processData(csv: any) {
+    console.log(this.currentProfiles);
     var allTextLines = csv.split(/\r\n|\n/);
     var lines = [];
+    var profiles = [];
     for (var i = 0; i < allTextLines.length; i++) {
       var data = allTextLines[i].split(',');
       var tarr = [];
       for (var j = 0; j < data.length; j++) {
         if (j == 1)
           tarr.push(data[j].replace(/['"]+/g, ''));
-        else if (j == 3)
+        else if (j == 3) {
           tarr.push(data[j].replace(/['"]+/g, ''));
-        else if (j == 5)
-          tarr.push(data[j].replace(/['"]+/g, ''));
+          var fullName = tarr[0] + " " + tarr[1];
+          tarr.push(fullName);
+        }
+        else if (j == 5) {
+          tarr.push(data[j].replace(/['"]+/g, ''))
+          tarr.push(this.currentProfiles.filter(function(profile) { return profile.email === eval(data[j]) && profile.active == true }).length > 0);
+          tarr.push(data[31].replace(/['"]+/g, ''));
+          tarr.push(data[29].replace(/['"]+/g, ''));
+        }
+
       }
-      if (tarr[2])
+      if (tarr[2]) {
         lines.push(tarr);
+        let tempProfile = new Profile(tarr[0], tarr[1], tarr[2], null, tarr[3], null, tarr[4], null, tarr[5], tarr[6]);
+        profiles.push(tempProfile);
+      }
+      // console.log(profiles);
+      // console.log(tarr);
     }
     lines.shift();
+    profiles.shift();
     this.connex = lines;
+    this.incomingProfiles = profiles;
   }
 
-  onSelect(contact: string[]): void {
+  onSelect(contact: Profile): void {
     console.log(this.currentProfile.endorsements);
     if (this.currentProfile.endorsements > 0) {
       console.log(contact);
-      let newContact = new Profile(contact[0], contact[1], null, contact[2]);
-      console.log(newContact);
-      this.invites.push(newContact);
+      contact.endorsementsReceived++;
+      console.log(contact);
+      this.invites.push(contact);
       this.currentProfile.endorsements--;
     }
   }
 
-  isInvited(contact: string[]): boolean {
-    return this.invites.filter(function(invite) { return invite.email === contact[2] }).length > 0;
+  isInvited(contact: Profile): boolean {
+    return this.invites.filter(function(invite) { return invite.email === contact.email }).length > 0;
   }
 
   advanceToConfirmation(): void {

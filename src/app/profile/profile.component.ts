@@ -4,8 +4,11 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { Subscription } from 'rxjs/Subscription';
 
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
 import { ProfileService, Profile } from '../profile.service';
 import { UIStateService } from '../ui-state.service';
+import { UploadModalComponent } from '../upload-modal/upload-modal.component';
 
 @Component({
   selector: 'profile-component',
@@ -20,6 +23,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   constructor(
     private profileService: ProfileService,
+    private modalService: NgbModal,
     private route: ActivatedRoute,
     private uiState: UIStateService,
     private location: Location) {
@@ -35,6 +39,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       console.log("no profile");
     }
   };
+
+  openImport() {
+    const modalRef = this.modalService.open(UploadModalComponent);
+  }
 
 
   fetchProfiles(): void {
