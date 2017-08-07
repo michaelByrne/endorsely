@@ -32,10 +32,10 @@ import { LinkedService } from './linked.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { UploadBaseComponent } from './upload-base/upload-base.component';
 import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { ContactsModalComponent } from './contacts-modal/contacts-modal.component';
-import { UserSearchComponent } from './user-search/user-search.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchOutputComponent } from './search-output/search-output.component';
 
 let providers = {
   "linkedin": {
@@ -60,10 +60,10 @@ let providers = {
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    UploadBaseComponent,
     UploadModalComponent,
     ContactsModalComponent,
-    UserSearchComponent,
+    SearchBarComponent,
+    SearchOutputComponent,
   ],
   bootstrap: [AppComponent],
   entryComponents: [UploadModalComponent, ContactsModalComponent],

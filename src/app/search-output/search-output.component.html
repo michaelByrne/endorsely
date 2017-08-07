@@ -1,0 +1,17 @@
+<div class="profile-list">
+  <h4>Select profiles to endorse</h4>
+  <button class="btn btn-default outline btn-sharp" (click)="showAll()">show all</button>
+  <hr>
+  <ul class="connex">
+    <li class="badge" *ngFor="let profile of currentProfiles | filterBy: searchObject">
+      <h4 style="float:left">{{ profile.endorsementsReceived }}</h4>
+      <span class="image-cropper center-block" *ngIf="profile.publicProfileUrl">
+        <img [src]="profile.publicProfileUrl" />
+      </span>
+      <span class="" *ngIf="!profile.publicProfileUrl" style="margin-left: 30px">
+        <small>inactive profile</small>
+      </span>
+      <span style="float:right;">{{ profile.firstName }} {{ profile.lastName }}</span>
+    </li>
+  </ul>
+</div>

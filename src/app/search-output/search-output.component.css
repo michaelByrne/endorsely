@@ -1,0 +1,41 @@
+
+.profile-list {
+  margin: 30px;
+}
+
+.image-cropper {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+    margin-left: 10px;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 110%;
+    width: auto;
+}
+
+inactive-img {
+  background-color: #607D8B;
+}
+
+.active-badge {
+  background-color: #6A9D80 !important;
+  pointer-events:none;
+  height: 2.8em !important;
+}
+
+.badge {
+  height: 3.0em;
+
+}
+
+.connex .badge {
+  padding: 9px;
+  margin-left: 0px !important;
+}

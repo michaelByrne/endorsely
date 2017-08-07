@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadBaseComponent } from './upload-base.component';
+import { SearchOutputComponent } from './search-output.component';
 
-describe('UploadBaseComponent', () => {
-  let component: UploadBaseComponent;
-  let fixture: ComponentFixture<UploadBaseComponent>;
+describe('SearchOutputComponent', () => {
+  let component: SearchOutputComponent;
+  let fixture: ComponentFixture<SearchOutputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadBaseComponent ]
+      declarations: [ SearchOutputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UploadBaseComponent);
+    fixture = TestBed.createComponent(SearchOutputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

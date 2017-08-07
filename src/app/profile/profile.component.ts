@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
@@ -20,6 +20,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   currentProfile: Profile;
   subscription: Subscription;
   addedNew: boolean = false;
+  searchTerm: string = '';
+
+
 
   constructor(
     private profileService: ProfileService,
@@ -38,7 +41,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     else {
       console.log("no profile");
     }
+    this.fetchProfiles();
   };
+
+  onSearch(term: any) {
+    console.log(term.searchTerm);
+    this.searchTerm = term.searchTerm;
+  }
 
   openImport() {
     const modalRef = this.modalService.open(UploadModalComponent);
