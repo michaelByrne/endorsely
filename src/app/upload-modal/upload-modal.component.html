@@ -1,4 +1,4 @@
-<div class="container upload-modal">
+<!-- <div class="container upload-modal">
   <div *ngIf="!connex">
     <p>Follow these instructions to download your contacts CSV file from LinkedIn and then upload the file below.</p> <br>
     <div class="fileUpload btn btn-primary btn-confirm">
@@ -35,4 +35,28 @@
       </li>
     </ul>
   </div>
+</div> -->
+
+<div class="modal-dialog" *ngIf="incomingProfiles.length < 1">
+  <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+			<svg class="olymp-close-icon"><use xlink:href="icons/icons.svg#olymp-close-icon"></use></svg>
+		</a>
+
+  <div class="ui-block-title">
+    <h6 class="title">Upload LinkedIn Contacts</h6>
+    <small class="text-muted">(Follow instructions for downloading your LinkedIn contacts CSV file here.)</small></div>
+
+  <a href="#" class="upload-photo-item">
+    <div class="fileUpload btn btn-primary btn-confirm outline">
+      <span>Upload</span>
+      <input type="file" class="upload" (change)="changeListener($event)" />
+    </div>
+  </a>
+</div>
+
+<div class="modal-dialog" *ngIf="incomingProfiles.length > 0">
+  <div class="ui-block-title">
+    <h6 class="title">Select profiles to upload ... </h6>
+  </div>
+  <div class="ui-block contact-item author-name" *ngFor="let profile of incomingProfiles"><span class="author-title">{{ profile.fullName }}</span></div>
 </div>

@@ -1,18 +1,3 @@
-<!-- <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-  <a class="navbar-brand  mr-auto" href="#">endorse.ly</a>
-
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/login">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/login">Register</a>
-    </li>
-  </ul>
-</nav> -->
 <style>
   .container {
     position: relative;
@@ -24,7 +9,7 @@
     box-sizing: border-box;
   }
 </style>
-<div class="row">
+<!-- <div class="row">
   <div class="col-3">
     <nav class="head" style="margin-left:20px !important">
       <div class="row">
@@ -39,5 +24,22 @@
       <hr>
     </nav>
   </div>
-</div>
-<router-outlet></router-outlet>
+</div> -->
+<header class="header">
+  <div class="page-title">
+    <h4>endorsly</h4>
+  </div>
+  <div class="header-content-wrapper">
+    <form class="search-bar w-search notification-list friend-requests">
+      <div class="form-group with-button">
+        <input class="form-control js-user-search" placeholder="Search users..." type="text">
+      </div>
+    </form>
+    <div class="control-block" *ngIf="!loggedState">
+      <!-- <button *ngIf="!loggedState" type="button" class="btn btn-default btn-sharp outline login" style="float:right" (click)="goToLogin()">Login</button> -->
+      <login></login>
+    </div>
+    <app-nav-bar *ngIf="loggedState"></app-nav-bar>
+  </div>
+</header>
+<!-- <router-outlet></router-outlet> -->

@@ -12,8 +12,8 @@ declare var IN: any;
 @Component({
   selector: 'login',
   template: `
-  <div class="container ln-login">
-    <a class="btn btn-social btn-linkedin" (click)="signIn('linkedin')"><span class="fa fa-linkedin"></span>Login with LinkedIn</a></div>
+  <div class="ln-login">
+    <a class="btn btn-social btn-linkedin" (click)="signIn('linkedin')"><span class="fa fa-linkedin"></span>Login</a></div>
   `,
   styleUrls: ['./login.component.css']
 })
@@ -41,7 +41,7 @@ export class LoginComponent implements OnDestroy {
             else {
               this.profileService.putLoggedInProfile(profile);
               this.uistate.sendLoggedState(true);
-              this.router.navigate(['/profile']);
+              //this.router.navigate(['/profile']);
             }
           });
       }

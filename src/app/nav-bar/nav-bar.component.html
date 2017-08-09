@@ -1,0 +1,45 @@
+<div class="control-block">
+  <div class="control-icon more has-items">
+    <svg class="olymp-trophy-icon"><use xlink:href="assets/icons.svg#olymp-trophy-icon"></use></svg>
+
+    <div class="label-avatar bg-primary">{{ currentProfile.endorsementsReceived }}</div>
+
+    <div class="more-dropdown more-with-triangle triangle-top-center">
+      <div class="ui-block-title ui-block-title-small">
+        <h6 class="title">Endorsements</h6>
+        <a href="#">Settings</a>
+      </div>
+
+      <div class="mCustomScrollbar" data-mcs-theme="dark">
+        <ul class="notification-list">
+        </ul>
+      </div>
+
+      <a href="#" class="view-all bg-primary">View All Endorsements</a>
+    </div>
+  </div>
+  <div class="author-page author vcard inline-items more">
+    <div class="author-thumb">
+      <img alt="author" src="../assets/placeholder.jpg" class="avatar">
+      <div class="more-dropdown more-with-triangle">
+        <div class="mCustomScrollbar" data-mcs-theme="dark">
+          <div class="ui-block-title ui-block-title-small">
+            <h6 class="title">Your Account</h6>
+          </div>
+          <ul class="account-settings">
+            <li>
+              <a href="#" (click)="openImport()"><span>Upload contacts</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="" class="author-name fn">
+      <div class="author-title">
+        {{ currentProfile.fullName }}
+      </div>
+      <span class="author-subtitle">top endorser</span>
+    </a>
+  </div>
+
+</div>

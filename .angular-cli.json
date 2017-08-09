@@ -21,7 +21,10 @@
       "scripts": [],
       "styles": [
         "styles.css",
-        "bootstrap-social.css"
+        "bootstrap-social.css",
+        "bootstrap-reboot.css",
+        "blocks.css",
+        "theme-styles.css"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

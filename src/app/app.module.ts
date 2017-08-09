@@ -36,6 +36,7 @@ import { UploadModalComponent } from './upload-modal/upload-modal.component';
 import { ContactsModalComponent } from './contacts-modal/contacts-modal.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchOutputComponent } from './search-output/search-output.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 let providers = {
   "linkedin": {
@@ -64,6 +65,7 @@ let providers = {
     ContactsModalComponent,
     SearchBarComponent,
     SearchOutputComponent,
+    NavBarComponent,
   ],
   bootstrap: [AppComponent],
   entryComponents: [UploadModalComponent, ContactsModalComponent],

@@ -9,3 +9,25 @@
   color: darkgrey;
 
 }
+
+.page-title{
+  /*font-family: 'Rock Salt', cursive;*/
+  /*font-family: 'Poiret One', cursive;*/
+  font-family: 'Homemade Apple', cursive;
+  /*font-family: 'Nothing You Could Do', cursive;*/
+  /*font-family: 'Cabin Sketch', cursive;*/
+  /*font-family: 'Fredericka the Great', cursive;*/
+  color: white;
+  padding: 20px 50px 20px 50px;
+  text-transform: none;
+}
+
+.login {
+  color: white;
+  border-color: white;
+  margin-bottom: 0;
+}
+
+.page-title{
+  padding-left: 50px;
+}

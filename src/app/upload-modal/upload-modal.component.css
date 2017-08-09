@@ -3,7 +3,15 @@
 }
 
 .modal-content {
-  border-radius: 0 !important;
+
+  background-color: transparent;
+  border: none;
+  width: auto !important;
+  border-radius: 5px !important;
+}
+
+.modal-dialog {
+  margin: 0 !important;
 }
 
 .fileUpload {
@@ -159,3 +167,37 @@ inactive-img {
   height: 1.8em;
 
 }
+
+.contact-item {
+  background-color: #888da8;
+  color: black;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.contact-item:hover {
+  background-color: lightgrey;
+}
+
+.upload-photo-item {
+  width: 95%;
+  color: black;
+  vertical-align: middle;
+  cursor: default;
+}
+
+.btn-confirm {
+  padding-top: 5px;
+  vertical-align: middle;
+  cursor: pointer !important;
+  color: black;
+}
+
+.upload {
+  cursor: pointer !important;
+}
+
+.upload-photo-item:hover {
+  fill: #ff5e3a;
+  background-color: #fafbfd;}

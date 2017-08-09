@@ -1,10 +1,19 @@
 
 
 .ln-login {
-  padding-top: 50px;
   color: white;
+  padding-top: 15px;
 }
 
 .btn-social {
   cursor: pointer;
+}
+
+.btn-linkedin {
+  background-color: transparent;
+  border-color: white;
+}
+
+.fa-linkedin {
+  border-right-color: white !important;
 }
