@@ -37,7 +37,7 @@
   </div>
 </div> -->
 
-<div class="modal-dialog" *ngIf="incomingProfiles.length < 1">
+<div class="modal-dialog" *ngIf="incomingProfiles.length < 1 && !requestConfirmation">
   <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
 			<svg class="olymp-close-icon"><use xlink:href="icons/icons.svg#olymp-close-icon"></use></svg>
 		</a>
@@ -47,16 +47,34 @@
     <small class="text-muted">(Follow instructions for downloading your LinkedIn contacts CSV file here.)</small></div>
 
   <a href="#" class="upload-photo-item">
-    <div class="fileUpload btn btn-primary btn-confirm outline">
-      <span>Upload</span>
+    <a href="#" class="fileUpload btn btn-primary btn-lg btn--half-width">
+      Upload
       <input type="file" class="upload" (change)="changeListener($event)" />
-    </div>
+    </a>
   </a>
 </div>
 
-<div class="modal-dialog" *ngIf="incomingProfiles.length > 0">
+<div class="modal-dialog" *ngIf="incomingProfiles.length > 0 && !requestConfirmation">
   <div class="ui-block-title">
-    <h6 class="title">Select profiles to upload ... </h6>
+    <h6 class="title">Select profiles to invite ... </h6><br>
+    <button class="btn btn-primary btn-lg btn--full-width" (click)="advanceToConfirmation()">Done</button>
   </div>
-  <div class="ui-block contact-item author-name" *ngFor="let profile of incomingProfiles"><span class="author-title">{{ profile.fullName }}</span></div>
+  <div class="ui-block contact-item author-name" *ngFor="let profile of incomingProfiles" [ngClass]="{'active-badge': profile.active }" (click)="onSelect(profile)" [class.selected]="isInvited(profile)">
+    <span class="author-title"><strong>{{ profile.fullName }}</strong></span>
+  </div>
+</div>
+
+<div *ngIf="requestConfirmation" class="confirm-window">
+  <div class="ui-block-title">
+    <h6>Your invites</h6>
+  </div>
+  <div class="ui-block-content">
+    <a href="#" class="btn btn-secondary btn-cancel btn-lg btn--half-width">Cancel<div class="ripple-container"></div></a>
+    <a href="#" class="btn btn-primary btn-lg btn--half-width" (click)="confirmInvites()">Confirm invitations<div class="ripple-container"></div></a>
+  </div>
+  <ul class="invites">
+    <li class="ui-block contact-item author-name" *ngFor="let invite of invites">
+      {{ invite.firstName }} {{ invite.lastName }}
+    </li>
+  </ul>
 </div>

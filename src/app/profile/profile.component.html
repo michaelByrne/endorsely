@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-3">
     <div *ngIf="currentProfile" style="margin-left:20px !important">
       <div class="profile-info">
@@ -52,4 +52,49 @@
     <div *ngIf="searchTerm.length > 0">
       <app-search-output [searchTerm]="searchTerm" [currentProfiles]="profiles"></app-search-output>
     </div>
+  </div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
+    </div>
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+      <div class="ui-block">
+        <div class="top-header">
+          <div class="top-header-thumb">
+            <img src="../../assets/background.jpg">
+          </div>
+          <div class="profile-section">
+            <div class="row">
+
+              <div class="col-lg-5 col-md-5 ">
+                <ul class="profile-menu">
+                  <li>
+                    <a href="#" class="btn btn-control bg-blue">{{ currentProfile.endorsementsReceived }}</a><span style="vertical-align: bottom">Endorsed</span>
+                  </li>
+
+
+                </ul>
+              </div>
+              <div class="col-lg-5 offset-lg-2 col-md-5 offset-md-2">
+                <ul class="profile-menu menu-right">
+                  <li><a href="#" class="btn btn-control bg-purple">{{ currentProfile.endorsements }}</a><span style="vertical-align: bottom">Endorsements</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="top-header-author">
+            <a href="#" class="author-thumb">
+              <img src="../../assets/ack.jpg" >
+            </a>
+            <div class="author-content">
+              <a href="#" class="h4 author-name">{{ currentProfile.fullName }}</a>
+              <div class="country">{{ currentProfile.position }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>

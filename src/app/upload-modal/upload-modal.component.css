@@ -158,9 +158,9 @@ inactive-img {
 }
 
 .active-badge {
-  background-color: #6A9D80 !important;
+  background-color: #08ddc1 !important;
   pointer-events:none;
-  height: 2.8em !important;
+  height: 4.8em !important;
 }
 
 .badge {
@@ -170,7 +170,7 @@ inactive-img {
 
 .contact-item {
   background-color: #888da8;
-  color: black;
+  color: white;
   padding: 10px;
   margin: 10px;
   cursor: pointer;
@@ -194,6 +194,10 @@ inactive-img {
   color: black;
 }
 
+.btn-cancel {
+  background-color: lightgrey;
+}
+
 .upload {
   cursor: pointer !important;
 }
@@ -201,3 +205,7 @@ inactive-img {
 .upload-photo-item:hover {
   fill: #ff5e3a;
   background-color: #fafbfd;}
+
+  .confirm-window {
+    font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }

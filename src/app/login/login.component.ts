@@ -35,7 +35,7 @@ export class LoginComponent implements OnDestroy {
             if (!profile) {
               this.profileService.addProfile(firstName, lastName, this.user.name, this.user.image, true, this.user.uid, this.user.email, this.user.location, this.user.position).then(profile => {
                 this.uistate.sendLoggedState(true);
-                this.router.navigate(['/profile']);
+                //this.router.navigate(['/profile']);
               });
             }
             else {

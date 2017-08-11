@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Profile, ProfileService } from '../profile.service';
 
@@ -14,7 +15,7 @@ import { UploadModalComponent } from '../upload-modal/upload-modal.component';
 export class NavBarComponent implements OnInit {
   currentProfile: Profile;
 
-  constructor(private profileService: ProfileService, private modalService: NgbModal) { }
+  constructor(private profileService: ProfileService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
     if (this.profileService.getLoggedInProfile()) {
@@ -28,6 +29,10 @@ export class NavBarComponent implements OnInit {
 
   openImport() {
     const modalRef = this.modalService.open(UploadModalComponent);
+  }
+
+  viewCurrentProfile() {
+    this.router.navigate(['/profile']);
   }
 
 }

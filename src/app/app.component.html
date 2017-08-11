@@ -32,7 +32,10 @@
   <div class="header-content-wrapper">
     <form class="search-bar w-search notification-list friend-requests">
       <div class="form-group with-button">
-        <input class="form-control js-user-search" placeholder="Search users..." type="text">
+        <input class="form-control js-user-search selectized" placeholder="Search users..." type="text">
+      </div>
+      <div class="selectize-dropdown-content">
+
       </div>
     </form>
     <div class="control-block" *ngIf="!loggedState">
@@ -42,4 +45,5 @@
     <app-nav-bar *ngIf="loggedState"></app-nav-bar>
   </div>
 </header>
-<!-- <router-outlet></router-outlet> -->
+<div class="header-spacer"></div>
+<router-outlet></router-outlet>
