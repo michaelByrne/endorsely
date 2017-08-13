@@ -30,14 +30,7 @@
     <h4>endorsly</h4>
   </div>
   <div class="header-content-wrapper">
-    <form class="search-bar w-search notification-list friend-requests">
-      <div class="form-group with-button">
-        <input class="form-control js-user-search selectized" placeholder="Search users..." type="text">
-      </div>
-      <div class="selectize-dropdown-content">
-
-      </div>
-    </form>
+    <search-bar></search-bar>
     <div class="control-block" *ngIf="!loggedState">
       <!-- <button *ngIf="!loggedState" type="button" class="btn btn-default btn-sharp outline login" style="float:right" (click)="goToLogin()">Login</button> -->
       <login></login>

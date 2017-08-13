@@ -32,7 +32,9 @@ export class NavBarComponent implements OnInit {
   }
 
   viewCurrentProfile() {
-    this.router.navigate(['/profile']);
+    console.log("naving");
+    this.profileService.sendRxViewedProfile(this.currentProfile);
+    this.router.navigate(['/profile/' + this.currentProfile.id]);
   }
 
 }

@@ -69,8 +69,8 @@
 
               <div class="col-lg-5 col-md-5 ">
                 <ul class="profile-menu">
-                  <li>
-                    <a href="#" class="btn btn-control bg-blue">{{ currentProfile.endorsementsReceived }}</a><span style="vertical-align: bottom">Endorsed</span>
+                  <li *ngIf="viewedProfile">
+                    <a href="#" class="btn btn-control bg-blue">{{ viewedProfile?.endorsementsReceived }}</a><span style="vertical-align: bottom">Endorsements</span>
                   </li>
 
 
@@ -78,7 +78,7 @@
               </div>
               <div class="col-lg-5 offset-lg-2 col-md-5 offset-md-2">
                 <ul class="profile-menu menu-right">
-                  <li><a href="#" class="btn btn-control bg-purple">{{ currentProfile.endorsements }}</a><span style="vertical-align: bottom">Endorsements</span>
+                  <li *ngIf="viewedProfile"><a href="#" class="btn btn-control bg-purple">{{ 10 - viewedProfile?.endorsements }}</a><span style="vertical-align: bottom">Endorsed</span>
                   </li>
                 </ul>
               </div>
@@ -89,8 +89,9 @@
               <img src="../../assets/ack.jpg" >
             </a>
             <div class="author-content">
-              <a href="#" class="h4 author-name">{{ currentProfile.fullName }}</a>
-              <div class="country">{{ currentProfile.position }}</div>
+              <a href="#" class="h4 author-name">{{ viewedProfile?.fullName }}</a>
+              <div class="country" *ngIf="viewedProfile?.position">{{ viewedProfile?.position }}</div>
+              <div class="country" *ngIf="!viewedProfile?.position"> Inactive Member </div>
             </div>
           </div>
         </div>

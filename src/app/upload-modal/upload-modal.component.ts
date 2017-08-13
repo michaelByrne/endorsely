@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UUID } from 'angular2-uuid';
 
 import { ProfileService, Profile, TempProfile } from '../profile.service';
@@ -13,7 +14,7 @@ import { ProfileService, Profile, TempProfile } from '../profile.service';
 })
 export class UploadModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal, public profileService: ProfileService) { }
+  constructor(public activeModal: NgbActiveModal, public profileService: ProfileService, public router: Router) { }
 
 
   connex: string[][];
@@ -67,8 +68,15 @@ export class UploadModalComponent implements OnInit {
           tarr.push(fullName);
         }
         else if (j == 5) {
-          tarr.push(data[j].replace(/['"]+/g, ''))
-          tarr.push(this.currentProfiles.filter(function(profile) { return profile.email === eval(data[j]) && profile.active == true }).length > 0);
+          tarr.push(data[j].replace(/['"]+/g, ''));
+          var id;
+          var exists = this.currentProfiles.filter(function(profile) { id = profile.id; return profile.email === eval(data[j]) && profile.active == true }).length > 0;
+          if (exists) {
+            tarr.push(true);
+          }
+          else {
+            tarr.push(false);
+          }
           tarr.push(data[31].replace(/['"]+/g, ''));
           tarr.push(data[29].replace(/['"]+/g, ''));
         }
@@ -76,7 +84,7 @@ export class UploadModalComponent implements OnInit {
       }
       if (tarr[2]) {
         lines.push(tarr);
-        let tempProfile = new Profile(tarr[0], tarr[1], tarr[2], null, tarr[3], null, tarr[4], null, tarr[5], tarr[6]);
+        let tempProfile = new Profile(tarr[0], tarr[1], tarr[2], null, tarr[3], null, tarr[4], null, tarr[5], tarr[6], 10, 0, tarr[7] || null);
         profiles.push(tempProfile);
       }
       // console.log(profiles);
@@ -86,14 +94,13 @@ export class UploadModalComponent implements OnInit {
     profiles.shift();
     this.connex = lines;
     this.incomingProfiles = profiles;
+    console.log(this.incomingProfiles);
   }
 
   onSelect(contact: Profile): void {
     console.log(this.currentProfile.endorsements);
     if (this.currentProfile.endorsements > 0) {
-      console.log(contact);
       contact.endorsementsReceived++;
-      console.log(contact);
       this.invites.push(contact);
       this.currentProfile.endorsements--;
     }
@@ -111,6 +118,13 @@ export class UploadModalComponent implements OnInit {
     this.profileService.addInactiveBatch(this.invites);
     this.profileService.putLoggedInProfile(this.currentProfile);
     this.profileService.sendRxProfile(this.currentProfile);
+    this.activeModal.dismiss();
+  }
+
+  goToProfile(profile: Profile): void {
+    this.profileService.sendRxViewedProfile(profile);
+    console.log(profile);
+    this.router.navigate(['/profile/' + profile.id]);
     this.activeModal.dismiss();
   }
 

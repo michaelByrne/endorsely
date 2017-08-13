@@ -18,3 +18,8 @@
   left: 10px;
   top: 9px;
 }
+
+.show-search-drop{
+    display: initial !important;
+
+}

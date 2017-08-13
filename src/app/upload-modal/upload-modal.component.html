@@ -1,57 +1,23 @@
-<!-- <div class="container upload-modal">
-  <div *ngIf="!connex">
-    <p>Follow these instructions to download your contacts CSV file from LinkedIn and then upload the file below.</p> <br>
-    <div class="fileUpload btn btn-primary btn-confirm">
-      <span>Upload</span>
-      <input type="file" class="upload" (change)="changeListener($event)" />
-    </div>
-    <hr>
-  </div>
-  <div *ngIf="connex && !requestConfirmation && currentProfile.endorsements > 0">
-    <h4>Select connections to invite</h4>
-    <label>Filter by last name: <input [(ngModel)]="searchText.lastName"></label><br>
-    <h5>You have <span style="color:lightgreen">{{ currentProfile.endorsements }}</span> endorsements remaining</h5>
-    <button class="btn btn-primary btn-confirm" (click)="advanceToConfirmation()">Done</button>
-    <ul class="connex">
-      <li class="badge" *ngFor="let profile of incomingProfiles" [ngClass]="{'active-badge': profile.active }" (click)="onSelect(profile)" [class.selected]="isInvited(profile)">
-        <span *ngIf="profile.active"><i class="fa fa-star fa-2x"></i></span>
-
-        <span *ngIf="profile.active" class="image-cropper center-block">
-          <img src="../../assets/placeholder.jpg" />
-        </span>
-        <span style="float:right;">{{ profile.fullName }} | {{ profile.position }} | {{ profile.company }}</span>
-      </li>
-    </ul>
-  </div>
-  <div *ngIf="currentProfile.endorsements < 1">
-    <h5>You are out of endorsements</h5>
-  </div>
-  <div *ngIf="requestConfirmation">
-    <h4>Your invites</h4>
-    <button class="btn btn-primary btn-confirm" (click)="confirmInvites()">Confirm invitations</button>
-    <ul class="invites">
-      <li class="badge" *ngFor="let invite of invites">
-        {{ invite.firstName }} {{ invite.lastName }}
-      </li>
-    </ul>
-  </div>
-</div> -->
-
 <div class="modal-dialog" *ngIf="incomingProfiles.length < 1 && !requestConfirmation">
-  <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+  <!-- <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
 			<svg class="olymp-close-icon"><use xlink:href="icons/icons.svg#olymp-close-icon"></use></svg>
-		</a>
+		</a> -->
 
   <div class="ui-block-title">
     <h6 class="title">Upload LinkedIn Contacts</h6>
     <small class="text-muted">(Follow instructions for downloading your LinkedIn contacts CSV file here.)</small></div>
 
-  <a href="#" class="upload-photo-item">
-    <a href="#" class="fileUpload btn btn-primary btn-lg btn--half-width">
+  <a class="upload-photo-item">
+    <!-- <a class="fileUpload btn btn-primary btn-lg btn--half-width">
       Upload
       <input type="file" class="upload" (change)="changeListener($event)" />
-    </a>
+    </a> -->
+    <label class="btn-bs-file btn btn-lg btn-primary">
+        Browse
+        <input type="file" (change)="changeListener($event)"/>
+    </label>
   </a>
+
 </div>
 
 <div class="modal-dialog" *ngIf="incomingProfiles.length > 0 && !requestConfirmation">
@@ -60,7 +26,10 @@
     <button class="btn btn-primary btn-lg btn--full-width" (click)="advanceToConfirmation()">Done</button>
   </div>
   <div class="ui-block contact-item author-name" *ngFor="let profile of incomingProfiles" [ngClass]="{'active-badge': profile.active }" (click)="onSelect(profile)" [class.selected]="isInvited(profile)">
-    <span class="author-title"><strong>{{ profile.fullName }}</strong></span>
+    <span *ngIf="profile.active" class="image-cropper center-block">
+          <img src="../../assets/placeholder.jpg" />
+    </span>
+    <span class="author-title"><strong>{{ profile.fullName }}</strong>&nbsp;&nbsp;<i class="fa fa-star" aria-hidden="true" *ngIf="profile.active"></i><span style="float:right;text-align:right">{{ profile.position }}<br>{{ profile.company }}</span></span>
   </div>
 </div>
 

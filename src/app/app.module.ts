@@ -1,5 +1,5 @@
 // Built-in Angular modules
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
@@ -26,7 +26,8 @@ import { ProfileService } from './profile.service';
 import { UIStateService } from './ui-state.service';
 import { LinkedService } from './linked.service';
 
-
+// Directives
+import { ClickOutsideDirective } from './click-outside.directive';
 
 // Components
 import { AppComponent } from './app.component';
@@ -66,6 +67,7 @@ let providers = {
     SearchBarComponent,
     SearchOutputComponent,
     NavBarComponent,
+    ClickOutsideDirective
   ],
   bootstrap: [AppComponent],
   entryComponents: [UploadModalComponent, ContactsModalComponent],

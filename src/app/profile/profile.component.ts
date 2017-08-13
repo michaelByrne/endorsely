@@ -18,7 +18,10 @@ import { UploadModalComponent } from '../upload-modal/upload-modal.component';
 export class ProfileComponent implements OnInit, OnDestroy {
   profiles: Profile[];
   currentProfile: Profile;
-  subscription: Subscription;
+  viewedProfile: Profile;
+  subscriptionOne: Subscription;
+  subscriptionTwo: Subscription;
+  subscriptionThree: Subscription;
   addedNew: boolean = false;
   searchTerm: string = '';
 
@@ -30,18 +33,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private uiState: UIStateService,
     private location: Location) {
-    this.subscription = this.profileService.getRxProfile().subscribe(profile => { this.currentProfile = profile });
+    this.subscriptionOne = this.profileService.getRxProfile().subscribe(profile => { this.currentProfile = profile });
+    this.subscriptionTwo = this.profileService.getRxViewedProfile().subscribe(profile => { console.log(profile); this.viewedProfile = profile });
+    this.subscriptionThree = this.route.params.subscribe(params => {
+      console.log(params.id);
+      this.profileService.getProfileByID(params.id).then(profile => { console.log(profile); this.viewedProfile = profile });
+    });
   }
 
 
   ngOnInit(): void {
-    if (this.profileService.getLoggedInProfile()) {
-      this.currentProfile = this.profileService.getLoggedInProfile();
-    }
-    else {
-      console.log("no profile");
-    }
-    this.fetchProfiles();
+
   };
 
   onSearch(term: any) {
@@ -72,7 +74,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
+    this.subscriptionOne.unsubscribe();
+    this.subscriptionTwo.unsubscribe();
+    this.subscriptionThree.unsubscribe();
   }
 
 }

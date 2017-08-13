@@ -1,5 +1,20 @@
-<form #f="ngForm" class="search" (ngSubmit)="searchUsers(f)" novalidate>
+<!-- <form #f="ngForm" class="search" (ngSubmit)="searchUsers(f)" novalidate>
   <span class="fa fa-lg fa-search">  </span>
   <input type="text" name="searchTerm" class="form-control" placeholder="Search users" aria-describedby="basic-addon2" ngModel>
 
+</form> -->
+
+<form #f="ngForm" class="search-bar w-search notification-list friend-requests" (ngSubmit)="searchUsers(f)" novalidate>
+  <div class="form-group with-button">
+    <input class="form-control js-user-search selectized" name="searchTerm" placeholder="Search users by last name..." type="text" ngModel>
+  </div>
+  <div class="selectize-control form-control js-user-search" (appClickOutside)="hide()" style="display: none" [ngClass]="{'show-search-drop': visible }">
+    <div class="selectize-dropdown multi form-control js-user-search">
+      <div *ngFor="let profile of currentProfiles | filterBy: nameFilter">
+        <div class="selectize-dropdown-content">
+          <a class="inline-items" (click)="goToProfile(profile.id)" data-selectable>{{ profile.fullName }}<a style="float:right"><small>view profile</small></a></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>

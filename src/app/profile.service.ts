@@ -45,6 +45,7 @@ export class ProfileService {
   }
   public currentProfile: Profile;
   private rxProfile = new Subject<Profile>();
+  private rxViewedProfile = new Subject<Profile>();
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private profilesUrl = 'https://sleepy-beyond-77887.herokuapp.com/profiles';
 
@@ -56,6 +57,15 @@ export class ProfileService {
 
   getRxProfile(): Observable<Profile> {
     return this.rxProfile.asObservable();
+  }
+
+  sendRxViewedProfile(profile: Profile) {
+    console.log(profile);
+    this.rxViewedProfile.next(profile);
+  }
+
+  getRxViewedProfile(): Observable<Profile> {
+    return this.rxViewedProfile.asObservable();
   }
 
   getProfiles(): Promise<Profile[]> {
@@ -73,6 +83,14 @@ export class ProfileService {
     return this.http.get(url)
       .toPromise()
       .then(response => { this.currentProfile = response.json(); return response.json() as Profile })
+      .catch(this.handleError);
+  }
+
+  getProfileByID(id: string): Promise<Profile> {
+    const url = `${this.profilesUrl}/id/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => { console.log(response.json()); console.log(url); return response.json() as Profile })
       .catch(this.handleError);
   }
 
@@ -121,6 +139,7 @@ export class ProfileService {
 
   private handleError(error: any): Promise<any> {
     console.error("an error happened here", error);
+    console.log("wtf");
     return Promise.reject(error.message || error);
   }
 }

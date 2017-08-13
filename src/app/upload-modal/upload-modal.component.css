@@ -10,26 +10,16 @@
   border-radius: 5px !important;
 }
 
+
+
 .modal-dialog {
   margin: 0 !important;
 }
 
-.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
+.btn {
+    cursor: pointer !important;
 }
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
+
 
 .selected {
   color: #607D8B !important;
@@ -101,12 +91,12 @@
   padding: 0;
 }
 .invites li {
-  cursor: pointer;
   position: relative;
   left: 0;
-  background-color: #EEE;
   margin: .5em;
   margin-bottom: 3px;
+  background-color: #08ddc1 !important;
+  pointer-events:none;
 
 }
 
@@ -160,7 +150,6 @@ inactive-img {
 .active-badge {
   background-color: #08ddc1 !important;
   pointer-events:none;
-  height: 4.8em !important;
 }
 
 .badge {
@@ -171,9 +160,10 @@ inactive-img {
 .contact-item {
   background-color: #888da8;
   color: white;
-  padding: 10px;
+  padding: 5px;
   margin: 10px;
   cursor: pointer;
+  padding-bottom: 27px;
 }
 
 .contact-item:hover {
@@ -184,7 +174,7 @@ inactive-img {
   width: 95%;
   color: black;
   vertical-align: middle;
-  cursor: default;
+
 }
 
 .btn-confirm {
@@ -198,13 +188,24 @@ inactive-img {
   background-color: lightgrey;
 }
 
-.upload {
-  cursor: pointer !important;
-}
 
 .upload-photo-item:hover {
   fill: #ff5e3a;
   background-color: #fafbfd;}
+
+  .btn-bs-file{
+    position:relative;
+}
+.btn-bs-file input[type="file"]{
+    position: absolute;
+    top: -9999999;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    width:0;
+    height:0;
+    outline: none;
+    cursor: inherit;
+}
 
   .confirm-window {
     font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
