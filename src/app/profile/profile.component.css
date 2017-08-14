@@ -10,7 +10,7 @@
 .btn-control {
   margin: 0 !important;
   display: inline-block;
-  margin-right: 2px !important;
+  margin-right: 9px !important;
   line-height: 49px;
 }
 
@@ -23,12 +23,7 @@
     padding-left: 7px;
 }
 
-.profile-menu li > div, .profile-menu li a {
 
-  font-size: 18px !important;
-  vertical-align: bottom !important;
-  color: white;
-}
 
 .profiles {
   margin: 0 0 2em 0;
@@ -150,6 +145,28 @@ img {
   width: 3.1em;
 }
 
-.profile-section{
-  padding: 20px 0 !important;
+
+
+.plus-sign {
+    height: 35px;
+    width: 35px;
+    padding-top: 12px;
+}
+
+.endorse-box {
+    padding-top: 12px;
+}
+
+.btn-control:hover {
+    opacity: .7;
+}
+
+.btn-control{
+    color: white !important;
+    cursor: pointer;
+}
+
+.inactive-endorser {
+    cursor: not-allowed;
+    
 }

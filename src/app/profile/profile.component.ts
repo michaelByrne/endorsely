@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { Subscription } from 'rxjs/Subscription';
 
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProfileService, Profile } from '../profile.service';
 import { UIStateService } from '../ui-state.service';
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-
+    this.currentProfile = this.profileService.getLoggedInProfile();
   };
 
   onSearch(term: any) {
@@ -60,6 +60,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.profileService.getProfiles().then(profiles => { this.profiles = profiles; console.log(profiles) });
   }
 
+  endorseViewedProfile() {
+    this.viewedProfile.endorsementsReceived++;
+    this.currentProfile.endorsements--;
+    this.profileService.updateEndorsement(this.viewedProfile);
+    this.profileService.updateEndorsement(this.currentProfile);
+  }
 
 
   public isCollapsed: boolean = true;

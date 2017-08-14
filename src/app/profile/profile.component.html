@@ -56,9 +56,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
-    </div>
-    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <div class="col-xl-8 offset-xl-2 col-md-8 offset-md-2">
       <div class="ui-block">
         <div class="top-header">
           <div class="top-header-thumb">
@@ -66,22 +64,58 @@
           </div>
           <div class="profile-section">
             <div class="row">
-
               <div class="col-lg-5 col-md-5 ">
                 <ul class="profile-menu">
-                  <li *ngIf="viewedProfile">
+                  <!-- <li *ngIf="viewedProfile">
                     <a href="#" class="btn btn-control bg-blue">{{ viewedProfile?.endorsementsReceived }}</a><span style="vertical-align: bottom">Endorsements</span>
+                  </li> -->
+                  <li>
+                    <a href="#">Summary</a>
                   </li>
-
-
+                  <li>
+                    <a href="#">Positions</a>
+                  </li>
                 </ul>
+
               </div>
               <div class="col-lg-5 offset-lg-2 col-md-5 offset-md-2">
-                <ul class="profile-menu menu-right">
-                  <li *ngIf="viewedProfile"><a href="#" class="btn btn-control bg-purple">{{ 10 - viewedProfile?.endorsements }}</a><span style="vertical-align: bottom">Endorsed</span>
+                <ul class="profile-menu">
+                  <!-- <li *ngIf="viewedProfile">
+                    <a href="#" class="btn btn-control bg-blue">{{ viewedProfile?.endorsementsReceived }}</a><span style="vertical-align: bottom">Endorsements</span>
+                  </li> -->
+                  <li>
+                    <a href="#">Skills</a>
+                  </li>
+                  <li>
+                    <a href="#">Endorsements</a>
                   </li>
                 </ul>
+
               </div>
+
+            </div>
+            <div class="control-block-button">
+              <a class="btn btn-control bg-purple" placement="top" ngbTooltip="Members endorsed">
+                  {{ viewedProfile?.endorsements }}
+                <div class="ripple-container"></div>
+              </a>
+              <a class="btn btn-control bg-blue" placement="top" ngbTooltip="Current endorsements">
+                  {{ viewedProfile?.endorsementsReceived }}
+                <div class="ripple-container"></div>
+              </a>
+              <a class="btn btn-control bg-green" placement="top" ngbTooltip="Endorse this member" (click)="endorseViewedProfile()" *ngIf="currentProfile">
+                  <svg class="olymp-plus-icon plus-sign"><use xlink:href="assets/icons.svg#olymp-plus-icon"></use></svg>
+
+                <div class="ripple-container"></div>
+              </a>
+              <a class="btn btn-control bg-green inactive-endorser" placement="top" ngbTooltip="You must be logged in to endorse" *ngIf="!currentProfile">
+                  <svg class="olymp-plus-icon plus-sign"><use xlink:href="assets/icons.svg#olymp-plus-icon"></use></svg>
+
+                <div class="ripple-container"></div>
+              </a>
+            </div>
+            <div class="row">
+
             </div>
           </div>
           <div class="top-header-author">
